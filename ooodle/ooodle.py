@@ -1,18 +1,34 @@
 # SETUP
 # Supply the target value
-targetNumber = -42
+targetNumber = 11
 # Set the first, second, and third operator (+, -, *)
-operator1 = " - "
+operator1 = " + "
 operator2 = " * "
-operator3 = " + "
+operator3 = " - "
 
-# As numbers are flagged as no present, add them here (ex = [4,1,7])
+# If a number is flagged as grey, it gets excluded from everything
 exclude = []
-# As numbers are flagged as correct or potential, add them here (ex = [4])
-include1 = []
-include2 = []
-include3 = []
-include4 = []
+
+## Below are the potential numbers that can be added/excluded
+# If number is green, add it to the include
+# OPTIONAL: if something is yellow, feel free to add it to the exlude.  If you don't then track it yourself.
+
+
+# First Number
+include1 = [] #green
+exclude1 = [] #yellow
+
+# Second Number
+include2 = [1] #green
+exclude2 = [] #yellow
+
+# Third Number
+include3 = [] #green
+exclude3 = [] #yellow
+
+# Fourth Number
+include4 = [] #green
+exclude4 = [8] #yellow
 
 # Basic Values -- Only change if ranges change
 start = 1
@@ -27,6 +43,12 @@ def safe_check(input1, input2, input3, input4):
   if(input1 == input3): return False
   if(input1 == input4): return False
   if(input2 == input4): return False
+  # Check for excludes
+  if input1 in exclude1: return False
+  if input2 in exclude2: return False
+  if input3 in exclude3: return False
+  if input4 in exclude4: return False
+
   return True
 
 def evaluate(input1, input2, input3, input4):
